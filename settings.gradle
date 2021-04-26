@@ -1,0 +1,3 @@
+include ':paassdk'
+include ':app'
+rootProject.name = "rz-paas-sdk"
