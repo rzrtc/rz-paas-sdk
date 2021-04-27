@@ -44,9 +44,9 @@ repositories {
 }
 dependencies {
 
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-    implementation 'com.google.code.gson:gson:2.6.2'
-    implementation(name: 'paassdk_1.5.1_20210421', ext: 'aar')
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    api(name: 'paassdk_1.5.1_20210421', ext: 'aar')
 
 }
 
