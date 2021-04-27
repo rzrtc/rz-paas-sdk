@@ -1,31 +1,62 @@
 plugins {
+    id 'com.android.library'
     id 'maven-publish'
 }
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+
 group = 'com.github.rzrtc'
-configurations.maybeCreate("default")
-artifacts.add("default", file('paassdk_1.5.1_20210421.aar'))
+version = '1.0'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 151
+        versionName "1.5.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation(name: 'paassdk_1.5.1_20210421', ext: 'aar')
+
+}
 
 afterEvaluate {
     publishing {
         publications {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
-                // Applies the component for the release build variant.
-//                from components.release
-
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.rz.paas'
+                from components.release
+                groupId = 'com.github.rzrtc'
                 artifactId = 'rz-paas-sdk'
-                version = '1.5.1'
-            }
-            // Creates a Maven publication called “debug”.
-            debug(MavenPublication) {
-                // Applies the component for the debug build variant.
-//                from components.debug
-
-                groupId = 'com.rz.paas'
-                artifactId = 'rz-paas-sdk'
-                version = '1.5.1'
+                version = '1.0'
             }
         }
     }
