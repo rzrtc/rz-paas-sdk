@@ -1,18 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'maven-publish'
+//apply plugin: 'maven-publish'
 
 group = 'com.github.rzrtc'
 version = '1.5.1'
-
-
-repositories {
-    mavenCentral()
-    google()
-    jcenter()
-    maven { url "https://jitpack.io" }
-}
-
 
 
 android {
@@ -50,16 +41,16 @@ dependencies {
 
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.rzrtc'
-                artifactId = 'rz-paas-sdk'
-                version = '1.0'
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.rzrtc'
+//                artifactId = 'rz-paas-sdk'
+//                version = '1.0'
+//            }
+//        }
+//    }
+//}
