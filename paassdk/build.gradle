@@ -1,4 +1,32 @@
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.rzrtc'
+plugins {
+    id 'maven-publish'
+}
+group = 'com.github.rzrtc'
 configurations.maybeCreate("default")
 artifacts.add("default", file('paassdk_1.5.1_20210421.aar'))
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+//                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.rz.paas'
+                artifactId = 'rz-paas-sdk'
+                version = '1.5.1'
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+//                from components.debug
+
+                groupId = 'com.rz.paas'
+                artifactId = 'rz-paas-sdk'
+                version = '1.5.1'
+            }
+        }
+    }
+}
